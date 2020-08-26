@@ -1,13 +1,15 @@
 #pragma once
 #include <vector>
-using namespace std;
+ 
 
 //since I cannot get this data natively
 //I'll cache it here in this struct
 //I'll assume data for each +1month, relative to
-//price date
+//price date, except the INITIAL POINT
+
+
 //SO ALL DISC,TAU ARE EQUAL LENGTH VECTORS ...
-//calling functions can calculate the time multiple and retrive the
+//calling functions can calculate the time multiple and retrieve the
 //stored numbers
  
 //A swap's payment dates will simple be the same, 
@@ -36,13 +38,25 @@ using namespace std;
 //should be ok.
 //alternative is to have a dictinonary structure:
 // vol at 3m, at 1year etc.
+
+//vol can be normal vol
 struct timezero
 {
-     const vector<double>& tau; //period year fractions     
-     const vector<double>& disc; //a discount value for each endtime
-     const vector<double>& vol; //a vol for each endtime (for a given strike)
+     std::vector<double> tau; //period year fractions     
+     std::vector<double> disc; //a discount value for each endtime
+     std::vector<double> vol; //a vol for each endtime (for a given strike)
 
-    timezero( vector<double>& _tau,  vector<double>& _disc, 
-        vector<double>& _vol): 
+    timezero( std::vector<double> _tau,  std::vector<double> _disc, 
+        std::vector<double> _vol): 
             tau(_tau),  disc(_disc), vol(_vol){}
+    std::vector<double> getdisc(){
+        return disc;
+    }        
 };
+
+ 
+struct somedata
+{
+    std::unique_ptr<double> xyz;
+};
+ 
