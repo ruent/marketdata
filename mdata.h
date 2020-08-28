@@ -42,15 +42,22 @@
 //vol can be normal vol
 struct timezero
 {
-     std::vector<double> tau; //period year fractions     
-     std::vector<double> disc; //a discount value for each endtime
-     std::vector<double> vol; //a vol for each endtime (for a given strike)
+     std::map<size_t, std::vector<double>, std::less<size_t>> data;
+     //std::vector<double> tau; //period year fractions     
+     //std::vector<double> disc; //a discount value for each endtime
+     //std::vector<double> vol; //a vol for each endtime (for a given strike)
 
-    timezero( std::vector<double> _tau,  std::vector<double> _disc, 
-        std::vector<double> _vol): 
-            tau(_tau),  disc(_disc), vol(_vol){}
-    std::vector<double> getdisc(){
-        return disc;
+    //timezero( std::vector<double> _tau,  std::vector<double> _disc, 
+    //    std::vector<double> _vol): 
+    //        tau(_tau),  disc(_disc), vol(_vol){}
+    timezero( std::map<size_t, std::vector<double>, std::less<size_t>> _data): 
+            data(_data){}
+
+    double tau(size_t i){
+        return data[i][0];
+    }
+    double disc(size_t i){
+        return data[i][1];
     }        
 };
 
