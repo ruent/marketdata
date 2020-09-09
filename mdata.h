@@ -50,7 +50,7 @@ struct timezero
     //timezero( std::vector<double> _tau,  std::vector<double> _disc, 
     //    std::vector<double> _vol): 
     //        tau(_tau),  disc(_disc), vol(_vol){}
-    timezero( std::map<size_t, std::vector<double>, std::less<size_t>> _data): 
+    timezero(std::map<size_t, std::vector<double>, std::less<size_t>> _data): 
             data(_data){}
 
     double tau(size_t i){
