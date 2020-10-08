@@ -55,12 +55,12 @@ struct timezero
 
     double tau(size_t i){
         if(data.find(i) == data.end()){
-           return 0.0}
+           return 0.0;}
         else return data[i][0];
     }
     double disc(size_t i){
         if(data.find(i) == data.end()){
-           return 0.0}
+           return 0.0;}
         else return data[i][1];
     }        
 };
