@@ -1,14 +1,5 @@
 #pragma once
 #include <vector>
- 
-
-//since I cannot get this data natively, I'll cache it here 
-
-//depending on payment dates etc. data should be made available here 
-//year fractions should be put here assuming a daycount
-//no daycount based calculations should/can appear here
-//I might need to be several tau vectors here where daycount
-// or freq change  
 
 struct timezero
 {
@@ -25,19 +16,26 @@ struct timezero
 
     double tau(size_t i){
         if(data.find(i) == data.end()){
+            std::cout << "mdata.h: no data found for: " << i <<"\n";
            return 0.0;}
         else return data[i][0];
     }
     double disc(size_t i){
         if(data.find(i) == data.end()){
-           return 0.0;}
+            std::cout << "mdata.h: no data found for: " << i <<"\n";
+            return 0.0;}
         else return data[i][1];
-    }        
+    }   
+    double disc_fwd(size_t i){
+        if(data.find(i) == data.end()){
+            std::cout << "mdata.h: no data found for: " << i <<"\n";
+            return 0.0;}
+        else return data[i][2];
+    }            
 };
 
  
 struct somedata
 {
-    //std::unique_ptr<double> xyz;
+    std::unique_ptr<double> xyz;
 };
- 
